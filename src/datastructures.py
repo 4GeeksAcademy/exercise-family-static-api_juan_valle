@@ -16,6 +16,20 @@ class FamilyStructure:
                 "last_name": last_name,
                 "age": 33,
                 "lucky_numbers": [7, 13, 22]
+            },
+            {
+                "id": self._generate_id(),
+                "first_name": "Jane",
+                "last_name": last_name,
+                "age": 35,
+                "lucky_numbers": [10, 14, 38]
+            },
+            {
+                "id": self._generate_id(),
+                "first_name": "Jimmy",
+                "last_name": last_name,
+                "age": 5,
+                "lucky_numbers": [1]
             }
         ]
 
@@ -28,16 +42,30 @@ class FamilyStructure:
     def add_member(self, member):
         ## You have to implement this method
         ## Append the member to the list of _members
+        member["last_name"] = self.last_name # Aseguramos que el apellido sea siempre Jackson
+        if "id" not in member:
+            member["id"] = self._generate_id() # Generamos un ID si no viene en el diccionario
+        self._members.append(member)
+        return True # Es buena práctica indicar que la operación fue exitosa
+
+
         pass
 
     def delete_member(self, id):
         ## You have to implement this method
         ## Loop the list and delete the member with the given id
+        initial_length = len(self._members)
+        self._members = [member for member in self._members if member["id"] != id]
+        return len(self._members) < initial_length # Retornamos True si la longitud de la lista disminuyó
         pass
 
     def get_member(self, id):
         ## You have to implement this method
         ## Loop all the members and return the one with the given id
+        for member in self._members:
+            if member["id"] == id:
+                return member
+        return None # Si no se encuentra ningún miembro con ese ID, retornamos None
         pass
 
     # This method is done, it returns a list with all the family members

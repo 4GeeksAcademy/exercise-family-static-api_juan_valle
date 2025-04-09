@@ -55,11 +55,11 @@ def add_new_member():
     if not all(field in request_body for field in required_fields):
         return jsonify({"msg": "Missing required fields: first_name, age, lucky_numbers"}), 400
 
-    # Asegurarse de que age sea un entero y mayor que 0
+    #  age debe ser un entero y mayor que 0
     if not isinstance(request_body.get("age"), int) or request_body.get("age") <= 0:
         return jsonify({"msg": "Age must be a positive integer"}), 400
 
-    # Asegurarse de que lucky_numbers sea una lista
+    #  lucky_numbers debe ser una lista
     if not isinstance(request_body.get("lucky_numbers"), list):
         return jsonify({"msg": "Lucky numbers must be a list"}), 400
 

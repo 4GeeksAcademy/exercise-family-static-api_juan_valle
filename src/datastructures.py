@@ -33,7 +33,7 @@ class FamilyStructure:
             }
         ]
 
-    # This method generates a unique incremental ID
+    # aQui se genera un ID unico
     def _generate_id(self):
         generated_id = self._next_id
         self._next_id += 1
@@ -46,7 +46,7 @@ class FamilyStructure:
         if "id" not in member:
             member["id"] = self._generate_id() # Generamos un ID si no viene en el diccionario
         self._members.append(member)
-        return True # Es buena práctica indicar que la operación fue exitosa
+        return True # Si todo está bien, saltará el mesaje member addes successfully
 
 
         pass
@@ -56,7 +56,7 @@ class FamilyStructure:
         ## Loop the list and delete the member with the given id
         initial_length = len(self._members)
         self._members = [member for member in self._members if member["id"] != id]
-        return len(self._members) < initial_length # Retornamos True si la longitud de la lista disminuyó
+        return len(self._members) < initial_length # si la lista diusminuye, retorna true
         pass
 
     def get_member(self, id):
@@ -65,7 +65,7 @@ class FamilyStructure:
         for member in self._members:
             if member["id"] == id:
                 return member
-        return None # Si no se encuentra ningún miembro con ese ID, retornamos None
+        return None # Si no se encuentra ningún miembro con ese ID, retorna None
         pass
 
     # This method is done, it returns a list with all the family members

@@ -49,7 +49,7 @@ class FamilyStructure:
         if "id" not in member:
             member["id"] = self._generate_id() # Generamos un ID si no viene en el diccionario
         self._members.append(member)
-        return True # Si todo está bien, saltará el mesaje member addes successfully
+        return member # Si todo está bien, saltará el mesaje member addes successfully
         
 
         #Función eliminar miembro

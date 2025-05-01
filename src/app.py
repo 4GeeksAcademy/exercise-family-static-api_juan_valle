@@ -61,8 +61,9 @@ def add_new_member():
     if not isinstance(request_body.get("lucky_numbers"), list):
         return jsonify({"msg": "Lucky numbers must be a list"}), 400
 
-    jackson_family.add_member(request_body)
-    return jsonify({"msg": "Member added successfully", "member_id": request_body.get("id")}), 200
+    
+    new_member=jackson_family.add_member(request_body)
+    return jsonify(new_member), 200
 
 @app.route('/members/<int:member_id>', methods=['DELETE'])
 def delete_family_member(member_id):
